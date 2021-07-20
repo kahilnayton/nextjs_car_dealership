@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node ./database-test.js && next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start"
   },
   "dependencies": {

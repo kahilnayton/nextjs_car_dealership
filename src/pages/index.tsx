@@ -17,6 +17,7 @@ import useSWR from "swr";
 import { getMakes, Make } from "../database/getMakes";
 import { getModels, Model } from "../database/getModels";
 import { getAsString } from "../getAsString";
+import { prefix } from "../../lib/constants";
 
 export interface SearchProps {
   makes: Make[];
@@ -171,7 +172,7 @@ export function ModelSelect({
 
   const initialModelsOrUndefined = make === initialMake ? models : undefined;
 
-  const { data: newModels } = useSWR<Model[]>("/api/models?make=" + make, {
+  const { data: newModels } = useSWR<Model[]>(prefix + "/api/models?make=" + make, {
     dedupingInterval: 60000,
     initialData: make === "all" ? [] : initialModelsOrUndefined,
   });
